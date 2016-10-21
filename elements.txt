@@ -6,7 +6,7 @@ B|Boron
 C|Carbon
 N|Nitrogen
 O|Oxygen
-F|Flourine
+F|Fluorine
 Ne|Neon
 Na|Sodium
 Mg|Magnesium
@@ -54,7 +54,7 @@ Boron|B
 Carbon|C
 Nitrogen|N
 Oxygen|O
-Flourine|F
+Fluorine|F
 Neon|Ne
 Sodium|Na
 Magnesium|Mg
