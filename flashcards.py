@@ -10,6 +10,7 @@ from __future__ import print_function
 import argparse
 import random
 
+
 class Card(object):
     """
     This is our implimentation of a flashcard. Takes a string in to form of
@@ -35,18 +36,24 @@ class Card(object):
         if not self.correct and not self.incorrect:
             return False
 
+
 def parseargs():
     "Parse arguments on the command line. Basically, print help or get file."
     parser = argparse.ArgumentParser(description="Study some flashcards.")
     parser.add_argument('file', type=argparse.FileType('r'))
+    parser.add_argument('--new', default=False, action='store_true') 
     args = parser.parse_args()
     return args
 
-def leave(cards):
+
+def printstats(cards, wantexit=False):
     """
     Handles exit output, by giving us information about cards we didn't handle
     perfectly. Makes it easier to track specific questions/answers that are
     being problematic.
+
+    Takes two paramaters: Cards, and optionally wantexit - wantexit=True to
+    terminate program instead of just printing stats.
     """
     def comp(card_a, card_b):
         "Just a pocket comparison function to sort cards by average."
@@ -61,27 +68,31 @@ def leave(cards):
         if card.average() < 100.0:
             print('{0}: {1}, got {2}%.'.format(
                 card.question, card.answer, card.average()))
-    exit(0)
+    if wantexit:
+        exit(0)
+
 
 def givecards(cards):
     """
     Give cards that need to be given or don't have a high enough score.
+    Function returns cards and "completed", a boolean True or False.
     """
 
     goodcards = [card for card in cards if card.average() < 70]
     if len(goodcards) == 0:
-        leave(cards)
+        printstats(cards)
+        return cards, True
     for card in goodcards:
         data = raw_input("{0}: ".format(card.question))
         if str(data).strip() == "quit":
-            leave(cards)
+            printstats(cards, wantexit=True)
         elif str(data).strip() == card.answer:
             print("Correct!\n\n")
             card.correct += 1
         else:
             print("The correct answer was {0}.".format(card.answer))
             card.incorrect += 1
-    return cards
+    return cards, False
 
 
 def main():
@@ -96,9 +107,18 @@ def main():
     for line in args.file:
         cards.append(Card(line))
     print("Please simply answer 'quit' when ready to exit.\n")
-    while True:
-        random.shuffle(cards)
-        cards = givecards(cards)
+    if args.new:
+        for numcards in range(0, len(cards)):
+            completed = False
+            cardset = cards[0:numcards + 1]
+            for card in cardset:
+                card.correct = 0.0
+                card.incorrect = 0.0
+            while not completed:
+                random.shuffle(cardset)
+                cardset, completed = givecards(cardset)
+                if completed and len(cards) == numcards:
+                    printstats(cards)
 
 
 if __name__ == "__main__":
