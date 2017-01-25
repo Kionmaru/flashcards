@@ -1,0 +1,37 @@
+0 degrees in radian measure|0
+30 degrees in radian measure|pi / 6
+45 degrees in radian measure|pi / 4
+60 degrees in radian measure|pi / 3
+90 degrees in radian measure|pi / 2
+0 radians in degrees|0
+pi / 6 radians in degrees|30
+pi / 4 radians in degrees|45
+pi / 3 radians in degrees|60
+pi / 2 radians in degrees|90
+cos(0)|1
+cos(pi / 6)|sqrt(3) / 2
+cos(pi / 4)|sqrt(2) / 2
+cos(pi / 3)|1 / 2
+cos(pi / 2)|0
+sin(0)|0
+sin(pi / 6)|1 / 2
+sin(pi / 4)|sqrt(2) / 2
+sin(pi / 3)|sqrt(3) / 2
+sin(pi / 2)|1
+Define sine in terms of an accute angle theta in ratios of sides|opp / hyp
+Define cosine in terms of an accute angle theta in ratios of sides|adj / hyp
+Define tangent in terms of an accute angle theta in ratios of sides|opp / adj
+Given (x,y) is on the terminal side of angle theta and r^2 = x^2 + y^2, write sin in terms of ratios x, y, and r|y / r
+Given (x,y) is on the terminal side of angle theta and r^2 = x^2 + y^2, write cos in terms of ratios x, y, and r|x / r
+Given (x,y) is on the terminal side of angle theta and r^2 = x^2 + y^2, write tan in terms of ratios x, y, and r|y / x
+Given (x,y) is on the terminal side of angle theta and r^2 = x^2 + y^2, write csc in terms of ratios x, y, and r|r / y
+Given (x,y) is on the terminal side of angle theta and r^2 = x^2 + y^2, write sec in terms of ratios x, y, and r|r / x
+Given (x,y) is on the terminal side of angle theta and r^2 = x^2 + y^2, write cot in terms of ratios x, y, and r|x / y
+First pythagorean theorem|(sin(theta))^2 + (cos(theta))^2 = 1
+Second pythagorean theorem|1 + (tan(theta))^2 = (sec(theta))^2
+Third pythagorean theorem|1 + (cot(theta))^2 = (csc(theta))^2
+Tan identity|sin(theta) / cos(theta)
+Cot identity|cos(theta) / sin(theta)
+csc identity|1 / sin(theta)
+sec identity|1 / cos(theta)
+cot identity|1 / tan(theta)
