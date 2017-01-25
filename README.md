@@ -14,14 +14,23 @@ This program is a script; an interpreted language. In order to run it, you need 
 There's two ways you can do this - first, by installing python for windows from www.python.org and running the .py script from inside of a command prompt.
 Second, by installing cygwin and then simply running it from a cygwin prompt.
 
+# Learning or reviewing?
+
+When learning a deck of cards for the first time, it's easier to add them one at a time - this is now provided for with the --new flag. On any individual run through of cards, it will still enforce the 75% requirement, AND it will randomize the entire deck before picking the first card.
+
+There is currently no provision to establish an arbitrary starting number.
+
 # Usage
 Usage is simple, so here's the program's own --help output:
->usage: flashcards.py [-h] file
->
->Study some flashcards.
->
->positional arguments:
->  file
->
->optional arguments:
->  -h, --help  show this help message and exit
+> usage: flashcards.py [-h] [--new] file
+> 
+> Study some flashcards.
+> 
+> positional arguments:
+>   file
+> 
+> optional arguments:
+>   -h, --help  show this help message and exit
+>   --new       Used to add new cards to the running deck one at a time in order
+>               to learn them. Still requires 75 percent per card.
+> 

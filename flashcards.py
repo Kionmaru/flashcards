@@ -41,7 +41,11 @@ def parseargs():
     "Parse arguments on the command line. Basically, print help or get file."
     parser = argparse.ArgumentParser(description="Study some flashcards.")
     parser.add_argument('file', type=argparse.FileType('r'))
-    parser.add_argument('--new', default=False, action='store_true') 
+    parser.add_argument(
+        '--new', default=False, action='store_true', help="".join([
+            "Used to add new cards to the running deck one at a ",
+            "time in order to learn them. Still requires 75 percent ",
+            "per card."]))
     args = parser.parse_args()
     return args
 
@@ -106,6 +110,9 @@ def main():
     cards = []
     for line in args.file:
         cards.append(Card(line))
+    # In fact, lets go ahead and shuffle before we even start, in case of
+    # --new.
+    random.shuffle(cards)
     print("Please simply answer 'quit' when ready to exit.\n")
     if args.new:
         for numcards in range(0, len(cards)):
