@@ -98,6 +98,13 @@ def givecards(cards):
             card.incorrect += 1
     return cards, False
 
+def givecardset(cardset, cards=[]):
+    completed = False
+    while not completed:
+        random.shuffle(cardset)
+        cardset, completed = givecards(cardset)
+        if completed and len(cardset) >= cards:
+            printstats(cards)
 
 def main():
     """
@@ -116,16 +123,17 @@ def main():
     print("Please simply answer 'quit' when ready to exit.\n")
     if args.new:
         for numcards in range(0, len(cards)):
-            completed = False
             cardset = cards[0:numcards + 1]
             for card in cardset:
                 card.correct = 0.0
                 card.incorrect = 0.0
-            while not completed:
-                random.shuffle(cardset)
-                cardset, completed = givecards(cardset)
-                if completed and len(cards) == numcards:
-                    printstats(cards)
+            givecardset(cardset, cards)
+        # TODO: Cards need a rounds object to store N sets of scores. This
+        # would be fairly easy if we simply give the Cards a newscoreobj() and
+        # add total and round average items...
+    else:
+        # Just do it once.
+        givecardset(cards)
 
 
 if __name__ == "__main__":
